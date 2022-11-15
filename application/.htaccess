@@ -1,0 +1,7 @@
+CGIPassAuth On
+WSGIPassAuthorization On
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+FcgidPassHeader Authorization
+
+RewriteEngine On
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
